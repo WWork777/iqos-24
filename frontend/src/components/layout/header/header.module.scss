@@ -1,0 +1,483 @@
+@import "../../../styles/variables.scss";
+
+.hero {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  background-color: $background-color;
+  width: 100%;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.burger_button {
+  display: none;
+  position: relative;
+  width: 28px;
+  height: 22px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  z-index: 1100;
+
+  span,
+  span::before,
+  span::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #1a1a1a;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+
+  span {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  span::before {
+    top: -8px;
+  }
+
+  span::after {
+    top: 8px;
+  }
+
+  &.burger_active span {
+    background-color: transparent;
+  }
+
+  &.burger_active span::before {
+    transform: rotate(45deg);
+    top: 0;
+  }
+
+  &.burger_active span::after {
+    transform: rotate(-45deg);
+    top: 0;
+  }
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+/* Мобильное меню */
+.mobile_menu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 75%;
+  max-width: 300px;
+  height: 100vh;
+  background-color: #fff;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+  padding: 30px 30px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: left 0.3s ease;
+  z-index: 1000;
+
+  nav {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    a {
+      font-size: 18px;
+      font-weight: 500;
+      color: #1a1a1a;
+      text-decoration: none;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: #1c3fb7;
+      }
+    }
+  }
+
+  &.open {
+    left: 0;
+  }
+}
+
+/* Затемнение фона */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 900;
+}
+
+/* Прячем десктопную кнопку на мобилке */
+@media (max-width: 768px) {
+  .categories_dropdown {
+    display: none;
+  }
+}
+
+.hero_container {
+  max-width: 1250px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 1250px) {
+    max-width: 900px;
+  }
+
+  @media (max-width: 992px) {
+    max-width: 800px;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
+.hero_top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0px;
+  position: relative;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &.scrolled {
+    padding: 12px 0px;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%; // Центрируем
+    transform: translateX(-50%); // Сдвигаем обратно на 50%
+    width: 100vw; // Ширина viewport
+    height: 1px;
+    background-color: #e5e7eb;
+  }
+}
+
+.hero_top__left {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  @media (max-width: 992px) {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+.categories_dropdown {
+  position: relative;
+
+  span {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    gap: 7px;
+    background-color: #f4f4f5;
+    padding: 8px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    @media (max-width: 450px) {
+      padding: 5px 10px;
+    }
+
+    @media (max-width: 390px) {
+      font-size: 13px;
+    }
+
+    &:hover {
+      color: #1c3fb7;
+    }
+
+    img:last-child {
+      transition: transform 0.3s ease;
+    }
+
+    .rotated {
+      transform: rotate(180deg);
+      transition: transform 0.3s ease;
+    }
+  }
+}
+
+.dropdown_menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  min-width: 100%;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  animation: dropdownFadeIn 0.2s ease-out;
+
+  &.closing {
+    animation: dropdownFadeOut 0.2s ease-in;
+  }
+}
+
+.dropdown_content {
+  padding: 8px 0;
+
+  a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #374151;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: #f8f9fa;
+      color: #1c3fb7;
+    }
+  }
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dropdownFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.logo_container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  transition: all 0.3s ease;
+
+  h2 {
+    font-size: 30px;
+    transition: font-size 0.3s ease;
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
+
+    @media (max-width: 450px) {
+      font-size: 24px;
+    }
+
+    @media (max-width: 420px) {
+      font-size: 22px;
+    }
+  }
+
+  img {
+    transition: all 0.3s ease;
+
+    @media (max-width: 768px) {
+      width: 40px;
+      height: 40px;
+    }
+
+    @media (max-width: 402px) {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+.hero_top__right {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+
+  @media (max-width: 992px) {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .phone {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .cart_container {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 30px;
+    gap: 20px;
+
+    .backet {
+      display: block;
+    }
+
+    .cart_badge {
+      position: absolute;
+      top: -8px;
+      right: 35px;
+      background-color: #ff4444;
+      color: white;
+      border-radius: 50%;
+      min-width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 600;
+      line-height: 1;
+      padding: 2px;
+      border: 2px solid $background-color;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .like_badge {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background-color: #ff4444;
+      color: white;
+      border-radius: 50%;
+      min-width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 600;
+      line-height: 1;
+      padding: 2px;
+      border: 2px solid $background-color;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .socials {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    @media (max-width: 480px) {
+      img {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+}
+
+.hero_bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0px;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media (max-width: 992px) {
+    display: none;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    height: 1px;
+    background-color: #e5e7eb;
+  }
+
+  .hero_bottom_left_nav {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+
+    a {
+      font-size: 16px;
+      font-weight: 500;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -20px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background-color: #1c3fb7;
+        transition: width 0.2s;
+        border-radius: 5px;
+      }
+
+      &:hover {
+        color: #1c3fb7;
+        &::before {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .hero_bottom_right_nav {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+
+    a {
+      font-size: 16px;
+      font-weight: 500;
+      transition: all 0.2s;
+
+      &:hover {
+        color: #1c3fb7;
+      }
+    }
+
+    span {
+      background-color: red;
+      border-radius: 20px;
+      padding: 5px 10px;
+      font-size: 10px;
+      color: white;
+      font-weight: 500;
+    }
+  }
+}

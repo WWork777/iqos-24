@@ -1,0 +1,43 @@
+// -------------------------------
+// Цвета
+// -------------------------------
+$primary-color: #1d4ed8; // синий
+$secondary-color: #f97316; // оранжевый
+$background-color: #f9fafb; // светлый фон
+$text-color: #111827; // основной текст
+$heading-color: #111827; // заголовки
+$border-color: #e5e7eb; // границы
+
+// -------------------------------
+// Шрифты
+// -------------------------------
+$font-family-base: "Arial", sans-serif;
+
+// -------------------------------
+// Размеры
+// -------------------------------
+$max-width-container: 1200px;
+
+// -------------------------------
+// Отступы и радиусы
+// -------------------------------
+$border-radius: 5px;
+$padding-base: 1rem;
+
+// -------------------------------
+// Тени
+// -------------------------------
+$shadow-card: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+// -------------------------------
+// Миксины
+// -------------------------------
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin transition($property: all, $duration: 0.3s, $timing: ease-in-out) {
+  transition: $property $duration $timing;
+}

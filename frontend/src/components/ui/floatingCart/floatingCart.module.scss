@@ -1,0 +1,142 @@
+.floatingCart {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #3c50e0;
+  color: white;
+  border-radius: 50px;
+  padding: 12px 20px 12px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(60, 80, 224, 0.4);
+  transition: all 0.3s ease;
+  z-index: 999;
+  border: 2px solid transparent;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(60, 80, 224, 0.6);
+    background: #314997;
+  }
+
+  &:active {
+    transform: translateY(-1px);
+  }
+
+  &__icon {
+    position: relative;
+    background: white;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  &__badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ef4444;
+    color: white;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__price {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &__items {
+    font-size: 12px;
+    opacity: 0.9;
+    line-height: 1;
+  }
+}
+
+// Анимация появления
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.floatingCart {
+  animation: floatIn 0.4s ease-out;
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+  .floatingCart {
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 16px 10px 10px;
+    gap: 10px;
+
+    &__icon {
+      width: 42px;
+      height: 42px;
+    }
+
+    &__badge {
+      width: 20px;
+      height: 20px;
+      font-size: 10px;
+    }
+
+    &__price {
+      font-size: 14px;
+    }
+
+    &__items {
+      font-size: 11px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .floatingCart {
+    bottom: 15px;
+    right: 15px;
+    padding: 8px 14px 8px 8px;
+
+    &__icon {
+      width: 38px;
+      height: 38px;
+
+      img {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    &__info {
+      display: none; // На очень маленьких экранах скрываем текст, оставляем только иконку
+    }
+  }
+}

@@ -1,0 +1,222 @@
+// -------------------------------
+// Импорт переменных
+// -------------------------------
+@import "./variables.scss";
+
+// -------------------------------
+// Сброс стилей
+// -------------------------------
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+p {
+  margin-bottom: 0 !important;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: $background-color;
+  color: $text-color;
+  line-height: 1.6;
+}
+
+// -------------------------------
+// Ссылки и кнопки
+// -------------------------------
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+// -------------------------------
+// Глобальные контейнеры
+// -------------------------------
+
+.hero-container {
+  width: 100%;
+  padding-top: 200px;
+  padding-bottom: 50px;
+  max-width: 1250px;
+  margin-left: auto;
+  margin-right: auto;
+
+  h1 {
+    color: #1c274c;
+    font-size: 32px;
+    font-weight: 600;
+
+    @media (max-width: 992px) {
+      font-size: 28px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 22px;
+    }
+    @media (max-width: 430) {
+      font-size: 20px;
+    }
+    @media (max-width: 400) {
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 1250px) {
+    max-width: none;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  @media (max-width: 992px) {
+    padding-top: 160px;
+    max-width: none;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  @media (max-width: 768px) {
+    padding-bottom: 30px;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+  }
+
+  @media (max-width: 480px) {
+    padding-top: 140px;
+    padding-bottom: 20px;
+  }
+}
+
+.container {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  max-width: 1250px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (max-width: 1250px) {
+    max-width: none;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  @media (max-width: 768px) {
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  @media (max-width: 480px) {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+  }
+
+  h2 {
+    color: #1c274c;
+    font-size: 32px;
+    font-weight: 600;
+
+    @media (max-width: 992px) {
+      font-size: 28px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+      text-align: center;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 22px;
+      padding: 0 15px;
+    }
+  }
+}
+
+.second_page_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+// -------------------------------
+// Глобальные утилиты
+// -------------------------------
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  @include flex-center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.visible {
+  display: block !important;
+}
+
+// -------------------------------
+// Заголовки и параграфы
+// -------------------------------
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  color: $heading-color;
+}
+
+.catalog-layout {
+  display: flex;
+  gap: 30px;
+  margin-top: 50px;
+  width: 100%;
+}
+
+.catalog-content {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

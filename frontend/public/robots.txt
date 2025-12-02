@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Заблокированные пути
+Disallow: /privacy-policy
+Disallow: /terms
+Disallow: /checkout
+Disallow: /api/
+Disallow: /order-success
+Disallow: /wishlist
+
+# Блокировка поиска и фильтров
+Disallow: /*?search=*
+Disallow: /*?filter=*
+Disallow: /*?sort=*
+Disallow: /*/search/
+
+# Блокировка AJAX и служебных страниц
+Disallow: /*?_next=*
+Disallow: /_next/
+Disallow: /_error/
+
+Host: https://iqos-24.ru
+Sitemap: https://iqos-24.ru/sitemap.xml

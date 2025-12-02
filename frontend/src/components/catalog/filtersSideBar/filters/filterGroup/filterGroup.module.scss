@@ -1,0 +1,67 @@
+.filterGroup {
+  background-color: white;
+  padding: 7px 25px;
+  border-radius: 0.5rem;
+  box-shadow: 0 0px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+
+  .filterGroupHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 0;
+    position: relative;
+
+    h3 {
+      font-size: 16px;
+      font-weight: 400;
+      margin: 0;
+      color: #1f2937;
+    }
+
+    &:hover {
+      h3 {
+        color: #3c50e0;
+      }
+    }
+
+    // Линия под заголовком когда аккордеон открыт
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: -25px; // Компенсируем padding родителя
+      right: -25px; // Компенсируем padding родителя
+      height: 1px;
+      background-color: #9494943d;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+  }
+
+  // Показываем линию только когда аккордеон открыт
+  &.expanded {
+    .filterGroupHeader::after {
+      opacity: 1;
+    }
+  }
+
+  .arrow {
+    transition: transform 0.5s ease;
+
+    &.expanded {
+      transform: rotate(180deg);
+    }
+  }
+
+  .filterContent {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+
+    &.expanded {
+      max-height: 1000px;
+    }
+  }
+}

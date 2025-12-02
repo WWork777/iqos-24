@@ -1,0 +1,364 @@
+.toolbar {
+  background-color: #f9f9f9;
+  padding: 5.8px 16px;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.toolbarMain {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.searchContainer {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+  max-width: 400px;
+}
+
+.searchInput {
+  width: 100%;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.25s ease;
+  background-color: white;
+  padding: 10px 40px 10px 12px;
+  font-family: inherit;
+
+  &:focus {
+    outline: none;
+    border-color: #3c50e0;
+    box-shadow: 0 0 0 3px rgba(60, 80, 224, 0.1), 0 2px 6px rgba(0, 0, 0, 0.05);
+    transform: translateY(-1px);
+  }
+
+  &:hover {
+    border-color: #cbd5e0;
+  }
+
+  &::placeholder {
+    color: #9ca3af;
+  }
+}
+
+.searchIcon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: #6b7280;
+  pointer-events: none;
+  transition: color 0.25s ease;
+
+  .searchInput:focus + & {
+    color: #3c50e0;
+  }
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.select {
+  padding: 10px 32px 10px 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: white;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  min-width: 160px;
+  font-family: inherit;
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9L12 15L18 9' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position: right 8px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  appearance: none;
+
+  &:focus {
+    outline: none;
+    border-color: #3c50e0;
+    box-shadow: 0 0 0 3px rgba(60, 80, 224, 0.1), 0 2px 6px rgba(0, 0, 0, 0.05);
+    transform: translateY(-1px);
+  }
+
+  &:hover {
+    border-color: #3c50e0;
+  }
+}
+
+.mobileFilterBtn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #374151;
+  transition: all 0.25s ease;
+  font-family: inherit;
+
+  &:hover {
+    border-color: #3c50e0;
+    color: #3c50e0;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.filterBadge {
+  background: #ef4444;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.clearFiltersBtn {
+  padding: 10px 16px;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  color: #374151;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: inherit;
+  font-weight: 500;
+
+  &:hover {
+    border-color: #ef4444;
+    color: #ef4444;
+    background: #fef2f2;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  // Скрыть на десктопе по умолчанию
+  display: none;
+
+  // Стили для неактивного состояния
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    &:hover {
+      border-color: #e2e8f0;
+      color: #374151;
+      background: white;
+    }
+  }
+}
+
+// Класс для отображения только на мобильных
+.mobileOnly {
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.mobileCategoryFilters {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.categoryFilter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filterLabel {
+  font-size: 14px;
+  color: #374151;
+  font-weight: 500;
+  min-width: 80px;
+}
+
+.categorySelect {
+  flex: 1;
+  padding: 8px 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: inherit;
+
+  &:focus {
+    outline: none;
+    border-color: #3c50e0;
+    box-shadow: 0 0 0 2px rgba(60, 80, 224, 0.1);
+  }
+}
+
+.clearFilter {
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background-color: #f3f4f6;
+    color: #374151;
+  }
+}
+
+// Плавное появление
+.toolbar {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .searchContainer {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .toolbarMain {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .searchContainer {
+    min-width: auto;
+    max-width: none;
+    flex: 1 1 100%;
+    order: 1;
+  }
+
+  .controls {
+    order: 2;
+    flex: 1;
+    justify-content: space-between;
+  }
+
+  .select {
+    min-width: auto;
+    flex: 1;
+    max-width: 200px;
+  }
+
+  .mobileFilterBtn {
+    display: flex;
+  }
+
+  .mobileCategoryFilters {
+    display: flex;
+  }
+
+  // На мобильных кнопка сброса всегда видна
+  .clearFiltersBtn {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .toolbar {
+    padding: 10px 12px;
+  }
+
+  .select {
+    min-width: 140px;
+    font-size: 13px;
+    padding: 8px 28px 8px 10px;
+  }
+
+  .searchInput {
+    font-size: 13px;
+    padding: 8px 36px 8px 10px;
+  }
+
+  .mobileFilterBtn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .clearFiltersBtn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .categoryFilter {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .filterLabel {
+    min-width: auto;
+    font-size: 13px;
+  }
+
+  .categorySelect {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  .clearFilter {
+    font-size: 13px;
+    padding: 3px 6px;
+  }
+
+  .filterBadge {
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+  }
+}
+
+// Микро-анимации для интерактивности
+.searchInput,
+.select,
+.mobileFilterBtn,
+.clearFiltersBtn {
+  &:active {
+    transition: all 0.1s ease;
+  }
+}

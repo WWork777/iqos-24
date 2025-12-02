@@ -1,0 +1,31 @@
+# IDE files
+../.idea/
+
+# Virtual environment
+venv/
+
+# Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+.coverage
+.pytest_cache/
+
+# Environment variables
+backend/.env
+.env.local
+.env.*.local
+
+# FastAPI
+.fastapi/
+
+# Logs
+*.log
+
+# Local development files
+*.sqlite
+*.db
+/.env

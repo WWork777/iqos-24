@@ -1,0 +1,215 @@
+// ColorFilter.module.scss
+.filter {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.filterHeader {
+  margin-bottom: 12px;
+
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+  }
+}
+
+.filterOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.colorButton {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  // Граница для светлых цветов
+  &[style*="background-color: #fff"],
+  &[style*="background-color: white"],
+  &[style*="background-color: #ffffff"],
+  &[style*="background-color: #f8f8f8"],
+  &[style*="background-color: #f0f0f0"] {
+    border: 1px solid #e5e7eb;
+  }
+
+  // Граница для очень темных цветов
+  &[style*="background-color: #000"],
+  &[style*="background-color: black"],
+  &[style*="background-color: #111"],
+  &[style*="background-color: #222"] {
+    border: 1px solid #374151;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+  }
+
+  &:active {
+    transform: scale(1.05);
+  }
+
+  // Выбранное состояние
+  &.selected {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 0 0 2px #3c50e0;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
+      border: 2px solid #3c50e0;
+      border-radius: 10px;
+    }
+  }
+
+  // Галочка для выбранного цвета
+  svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+
+    // Автоматический выбор цвета галочки в зависимости от фона
+    .colorButton[style*="background-color: #fff"] &,
+    .colorButton[style*="background-color: white"] &,
+    .colorButton[style*="background-color: #ffffff"] &,
+    .colorButton[style*="background-color: #f8f8f8"] &,
+    .colorButton[style*="background-color: #f0f0f0"] & {
+      color: #000;
+    }
+
+    .colorButton[style*="background-color: #000"] &,
+    .colorButton[style*="background-color: black"] &,
+    .colorButton[style*="background-color: #111"] &,
+    .colorButton[style*="background-color: #222"] &,
+    .colorButton[style*="background-color: #333"] & {
+      color: #fff;
+    }
+
+    // Для средних тонов используем белый или черный в зависимости от яркости
+    .colorButton:not([style*="background-color: #fff"]):not(
+        [style*="background-color: white"]
+      ):not([style*="background-color: #ffffff"]):not(
+        [style*="background-color: #f8f8f8"]
+      ):not([style*="background-color: #f0f0f0"]):not(
+        [style*="background-color: #000"]
+      ):not([style*="background-color: black"]):not(
+        [style*="background-color: #111"]
+      ):not([style*="background-color: #222"]):not(
+        [style*="background-color: #333"]
+      )
+      & {
+      filter: brightness(0) invert(1); // Белая галочка
+    }
+  }
+}
+
+// Tooltip для названия цвета
+.colorTooltip {
+  position: relative;
+
+  &::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1f2937;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    z-index: 10;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid transparent;
+    border-top-color: #1f2937;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    z-index: 10;
+    margin-bottom: 0;
+  }
+
+  &:hover {
+    &::after,
+    &::before {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+// Компактный вариант для мобильных
+@media (max-width: 768px) {
+  .filter {
+    gap: 10px;
+    padding: 12px 0;
+  }
+
+  .filterHeader {
+    margin-bottom: 10px;
+
+    h3 {
+      font-size: 15px;
+    }
+  }
+
+  .colorButton {
+    width: 36px;
+    height: 36px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    &.selected {
+      &::before {
+        top: -3px;
+        left: -3px;
+        right: -3px;
+        bottom: -3px;
+      }
+    }
+  }
+
+  .filterOptions {
+    gap: 6px;
+  }
+}

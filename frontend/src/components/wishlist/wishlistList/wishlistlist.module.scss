@@ -1,0 +1,503 @@
+// wishlistList.module.scss
+.wishlist {
+  &__header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  &__headerActions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+
+  &__refresh {
+    background: #f8fafc;
+    color: #3c50e0;
+    border: 1px solid #e2e8f0;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    &:hover:not(:disabled) {
+      background: #3c50e0;
+      color: white;
+      border-color: #3c50e0;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  &__clear {
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #dc2626;
+      color: white;
+    }
+  }
+
+  &__empty {
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  &__emptyIcon {
+    margin-bottom: 20px;
+    opacity: 0.7;
+  }
+
+  &__emptyTitle {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1c274c;
+    margin-bottom: 10px;
+  }
+
+  &__emptyText {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+
+  &__continueShopping {
+    background: #3c50e0;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-block;
+
+    &:hover {
+      background: #314997;
+      transform: translateY(-2px);
+    }
+  }
+
+  &__footer {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid #f0f0f0;
+    margin-top: 40px;
+  }
+}
+
+// 📱 МОБИЛЬНЫЕ КАРТОЧКИ (основной вид на телефоне)
+.wishlistCards {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.wishlistCard {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f0f0f0;
+
+  &__header {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  &__image {
+    flex-shrink: 0;
+  }
+
+  &__img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 8px;
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 0; // Для правильного обрезания текста
+  }
+
+  &__name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1c274c;
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__variant {
+    font-size: 13px;
+    color: #666;
+    margin: 0 0 8px 0;
+  }
+
+  &__price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #3c50e0;
+  }
+
+  &__remove {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #f8fafc;
+    border: none;
+    border-radius: 6px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: #fff0f0;
+      transform: scale(1.1);
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #f0f0f0;
+  }
+
+  &__stock {
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: 6px;
+    flex: 1;
+    text-align: center;
+
+    &_inStock {
+      background: #f0f9ff;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+    }
+
+    &_outOfStock {
+      background: #fef2f2;
+      color: #dc2626;
+      border: 1px solid #fecaca;
+    }
+
+    &_loading {
+      background: #f3f4f6;
+      color: #6b7280;
+      border: 1px solid #e5e7eb;
+    }
+  }
+
+  &__addToCart {
+    background: #3c50e0;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    min-width: 100px;
+
+    &:hover:not(:disabled) {
+      background: #314997;
+      transform: translateY(-1px);
+    }
+
+    &:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+  }
+}
+
+// 💻 ДЕСКТОПНАЯ ТАБЛИЦА (только для больших экранов)
+.wishlistTable {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+
+  &__header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    font-weight: 600;
+    color: #1c274c;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    border-bottom: 1px solid #f0f0f0;
+    align-items: center;
+    transition: background 0.2s;
+
+    &:hover {
+      background: #f8fafc;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__col {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.productInfo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  &__image {
+    flex-shrink: 0;
+  }
+
+  &__img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    background: #f2f3f8;
+    border-radius: 8px;
+    padding: 5px;
+  }
+
+  &__details {
+    flex: 1;
+  }
+
+  &__name {
+    font-size: 16px;
+    font-weight: 500;
+    color: #1c274c;
+    margin: 0 0 5px 0;
+    line-height: 1.3;
+  }
+
+  &__variant {
+    font-size: 12px;
+    color: #666;
+  }
+}
+
+.productPrice {
+  font-size: 18px;
+  font-weight: 600;
+  color: #3c50e0;
+}
+
+.stockStatus {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  width: fit-content;
+  transition: all 0.3s ease;
+
+  &_inStock {
+    background: #f0f9ff;
+    color: #0369a1;
+    border: 1px solid #bae6fd;
+  }
+
+  &_outOfStock {
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+  }
+
+  &_loading {
+    background: #f3f4f6;
+    color: #6b7280;
+    border: 1px solid #e5e7eb;
+  }
+}
+
+.productActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &__addToCart {
+    background: #3c50e0;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    flex: 1;
+
+    &:hover:not(:disabled) {
+      background: #314997;
+      transform: translateY(-1px);
+    }
+
+    &:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+  }
+
+  &__remove {
+    background: #f2f3f8;
+    border: none;
+    border-radius: 6px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #fff0f0;
+      transform: scale(1.1);
+    }
+  }
+}
+
+// 🔄 Спиннер
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// 📱 Дополнительная адаптивность для очень маленьких экранов
+@media (max-width: 480px) {
+  .wishlistCard {
+    padding: 12px;
+
+    &__header {
+      flex-direction: column;
+      text-align: center;
+      gap: 8px;
+    }
+
+    &__image {
+      align-self: center;
+    }
+
+    &__img {
+      width: 70px;
+      height: 70px;
+    }
+
+    &__remove {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+    }
+
+    &__footer {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &__addToCart {
+      width: 100%;
+      padding: 12px;
+    }
+  }
+
+  .wishlist__headerActions {
+    gap: 10px;
+  }
+
+  .wishlist__refresh,
+  .wishlist__clear {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .wishlistCard {
+    &__name {
+      font-size: 15px;
+    }
+
+    &__price {
+      font-size: 16px;
+    }
+  }
+}

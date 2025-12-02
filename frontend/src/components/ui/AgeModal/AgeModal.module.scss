@@ -1,0 +1,59 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  background-color: #f7f7f7; // светло-синий фон
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+
+  h2 {
+    margin-bottom: 1rem;
+    color: #003366; // темно-синий заголовок
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+    color: #0059b3; // синий текст
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  button {
+    padding: 0.6rem 1.8rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+  }
+
+  .yes {
+    background-color: #3399ff; // основной синий
+    color: white;
+    &:hover {
+      background-color: #2673cc; // темнее при наведении
+    }
+  }
+
+  .no {
+    background-color: #99ccff; // светло-синий
+    color: #003366;
+    &:hover {
+      background-color: #80b3ff; // чуть темнее при наведении
+    }
+  }
+}
