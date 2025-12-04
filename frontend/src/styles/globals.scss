@@ -35,7 +35,22 @@ body {
   background-color: $background-color;
   color: $text-color;
   line-height: 1.6;
+  position: relative;
+
+   &::before {
+    content: '';
+    position: fixed; // или absolute в зависимости от ваших нужд
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("/newYearFon/newYearFon.png");
+    opacity: 0.2; // Регулируйте прозрачность здесь (0-1)
+    z-index: -1; // Отправляем фон на задний план
+    pointer-events: none; // Чтобы не мешал кликам
+  }
 }
+
 
 // -------------------------------
 // Ссылки и кнопки

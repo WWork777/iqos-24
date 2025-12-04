@@ -89,11 +89,11 @@
 
 // Стили для заблокированной кнопки заказа
 .cart__orderDisabled {
-  background-color: #9ca3af !important;
+  background-color: #627aa3 !important;
   cursor: not-allowed !important;
 
   &:hover {
-    background-color: #9ca3af !important;
+    background-color: #627aa3 !important;
     transform: none !important;
   }
 }

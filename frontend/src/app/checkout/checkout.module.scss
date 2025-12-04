@@ -127,13 +127,13 @@
 
 // Стили для заблокированной кнопки
 .submitButton:disabled {
-  background-color: #9ca3af !important;
+  background-color: #627aa3 !important;
   cursor: not-allowed !important;
   transform: none !important;
   box-shadow: none !important;
 
   &:hover {
-    background-color: #9ca3af !important;
+    background-color: #627aa3 !important;
   }
 }
 
@@ -295,7 +295,7 @@
     }
 
     &::placeholder {
-      color: #9ca3af;
+      color: #627aa3;
     }
   }
 }
