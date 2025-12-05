@@ -7,6 +7,7 @@ import NewProducts from "@/components/main-page/newProducts/newProducts";
 import Reviews from "@/components/main-page/reviews/reviews";
 import Sales from "@/components/main-page/sales/sales";
 import PromotionalModal from "@/components/PromotionModal/PromotionModal"
+import BlockModal from "@/components/BlockModal/BlockModal"
 import type { Metadata } from "next";
 import Script from "next/script";
 
@@ -78,6 +79,7 @@ export default function Home() {
       <Exclusive />
       <Reviews />
       <PromotionalModal allowClose={true}/>
+      <BlockModal allowClose={true}/>
     </>
   );
 }
