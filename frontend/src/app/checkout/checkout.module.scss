@@ -3,6 +3,10 @@
   font-weight: 700;
   color: #1c274c;
   margin-bottom: 40px;
+
+  .subtitle{
+    font-size: 20px;
+  }
 }
 
 .content {
@@ -603,6 +607,10 @@
     font-size: 24px;
     margin-bottom: 30px;
     text-align: left;
+
+    .subtitle{
+      font-size: 14px;
+    }
   }
 
   .cartSection,

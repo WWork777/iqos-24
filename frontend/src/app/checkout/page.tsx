@@ -358,7 +358,10 @@ ${orderData.ordered_items
   return (
     <div className="hero-container">
       <div className={styles.container}>
-        <h1 className={styles.title}>Оформление заказа</h1>
+        <h1 className={styles.title}>Оформление заказа
+          <br/>
+          <span className={styles.subtitle}>Укажите Ваш номер в WhatsApp или Telegram ник для связи</span>
+        </h1>
 
         <div className={styles.content}>
           <div className={styles.formSection}>
