@@ -1,8 +1,8 @@
 'use client'
 import { useEffect, useState } from 'react';
-import './PromotionModal.scss';
+import styles from "./PromotionModal.module.scss"
 
-const PromotionModal = ({ allowClose = false }) => {
+const PromotionModal = ({ allowClose = false, onClose }) => {
   const [isVisible, setIsVisible] = useState(false);
   
   useEffect(() => {
@@ -22,26 +22,35 @@ const PromotionModal = ({ allowClose = false }) => {
     };
   }, [isVisible]);
 
+  // Функция для полного закрытия
+  const handleClose = () => {
+    setIsVisible(false);
+    // Вызываем колбэк из родителя
+    if (onClose) {
+      onClose();
+    }
+  };
+
   if (!isVisible) return null;
 
   return (
-    <div className="modalOverlay">
-      <div className="modalContent">
+    <div className={styles.modalOverlay}>
+      <div className={styles.modalContent}>
         {allowClose && (
           <button 
-            className="closeButton"
-            onClick={() => setIsVisible(false)}
+            className={styles.closeButton}
+            onClick={handleClose} // Используем handleClose вместо setIsVisible(false)
             aria-label="Закрыть уведомление"
           >
             &times;
           </button>
         )}
         <a href="/catalog/iqos?brand=standart">
-          <div className='leftHalf'>
+          <div className={styles.leftHalf}>
             <h2>Новогодние Скидки</h2>
             <p>До конца года вы можете приобрести продукцию Iluma Standart и Iluma Prime со скидкой</p>
           </div>
-          <div className='rightHalf'>
+          <div className={styles.rightHalf}>
             <img src="/Promotion/promo.png" alt="" />
           </div>
         </a>

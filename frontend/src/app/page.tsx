@@ -6,8 +6,7 @@ import Hero from "@/components/main-page/hero-block/Hero";
 import NewProducts from "@/components/main-page/newProducts/newProducts";
 import Reviews from "@/components/main-page/reviews/reviews";
 import Sales from "@/components/main-page/sales/sales";
-import PromotionalModal from "@/components/PromotionModal/PromotionModal";
-import BlockModal from "@/components/BlockModal/BlockModal";
+import ModalManager from "@/components/ModalManager/ModalManager";
 import type { Metadata } from "next";
 import Script from "next/script";
 
@@ -78,8 +77,7 @@ export default function Home() {
       <BestSellers title="Хиты продаж IQOS ILUMA и TEREA" limit={8} />
       <Exclusive />
       <Reviews />
-      <PromotionalModal allowClose={true} />
-      {/* <BlockModal allowClose={true}/> */}
+      <ModalManager/>
     </>
   );
 }
