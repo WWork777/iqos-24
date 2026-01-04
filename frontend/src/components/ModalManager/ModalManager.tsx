@@ -7,12 +7,12 @@ const ModalManager = () => {
   const [currentStep, setCurrentStep] = useState(0); // 0 = нет модалок, 1 = блок, 2 = промо
   
   useEffect(() => {
-    setCurrentStep(1);
+    setCurrentStep(2);
   }, []);
 
-  const handleCloseBlock = () => {
-    setCurrentStep(2);
-  };
+  // const handleCloseBlock = () => {
+  //   setCurrentStep(2);
+  // };
 
   const handleClosePromo = () => {
     setCurrentStep(0);
@@ -30,12 +30,12 @@ const ModalManager = () => {
 
   return (
     <>
-      {currentStep === 1 && (
+      {/* {currentStep === 1 && (
         <BlockModal 
           allowClose={false} 
           onClose={handleCloseBlock}
         />
-      )}
+      )} */}
       
       {currentStep === 2 && (
         <PromotionModal 
