@@ -32,7 +32,7 @@ export default function CheckoutPage() {
       // Если это относительный путь
       const parts = url.split("/");
       const encodedParts = parts.map((part) =>
-        part.includes("%") || part === "" ? part : encodeURIComponent(part)
+        part.includes("%") || part === "" ? part : encodeURIComponent(part),
       );
       return encodedParts.join("/");
     } catch (error) {
@@ -51,7 +51,7 @@ export default function CheckoutPage() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    tg:"",
+    tg: "",
     city: "",
     address: "",
   });
@@ -150,7 +150,7 @@ ${orderData.ordered_items
     (item: any, index: number) =>
       `• ${item.product_name} x${
         item.quantity
-      }: ${item.price_at_time_of_order.toLocaleString("ru-RU")} ₽`
+      }: ${item.price_at_time_of_order.toLocaleString("ru-RU")} ₽`,
   )
   .join("\n")}
 
@@ -170,7 +170,7 @@ ${orderData.ordered_items
             text: message,
             parse_mode: "Markdown",
           }),
-        }
+        },
       );
 
       if (!response.ok) {
@@ -244,7 +244,7 @@ ${orderData.ordered_items
     // Проверка согласия с политикой
     if (!agreementChecked) {
       alert(
-        "Пожалуйста, согласитесь с политикой конфиденциальности и пользовательским соглашением"
+        "Пожалуйста, согласитесь с политикой конфиденциальности и пользовательским соглашением",
       );
       setIsSubmitting(false);
       return;
@@ -275,7 +275,7 @@ ${orderData.ordered_items
       const orderPayload = {
         customer_name: formData.name,
         phone_number: formData.phone.replace(/\D/g, ""),
-        tg_username:formData.tg,
+        tg_username: formData.tg,
         is_delivery: deliveryMethod === "delivery",
         city: formData.city || "",
         address: formData.address || "",
@@ -302,7 +302,7 @@ ${orderData.ordered_items
 
       if (!telegramSent) {
         console.warn(
-          "⚠️ Заказ сохранен, но уведомление в Telegram не отправлено"
+          "⚠️ Заказ сохранен, но уведомление в Telegram не отправлено",
         );
         // Продолжаем выполнение, так как основной заказ сохранен
       }
@@ -361,9 +361,12 @@ ${orderData.ordered_items
   return (
     <div className="hero-container">
       <div className={styles.container}>
-        <h1 className={styles.title}>Оформление заказа
-          <br/>
-          <span className={styles.subtitle}>ВАЖНО! Укажите Ваш номер в WhatsApp или Telegram ник для связи</span>
+        <h1 className={styles.title}>
+          Оформление заказа
+          <br />
+          <span className={styles.subtitle}>
+            ВАЖНО! Укажите Ваш номер в WhatsApp или Telegram ник для связи
+          </span>
         </h1>
 
         <div className={styles.content}>
@@ -413,13 +416,13 @@ ${orderData.ordered_items
                 <h3>Способ получения</h3>
 
                 {/* Сообщение о недоступности самовывоза */}
-                {/* <div className={styles.pickupDisabled}>
+                <div className={styles.pickupDisabled}>
                   <div className={styles.pickupDisabledIcon}>⚠️</div>
                   <div className={styles.pickupDisabledText}>
                     <strong>Самовывоз временно недоступен</strong>
                     <p>В данный момент доступна только доставка</p>
                   </div>
-                </div> */}
+                </div>
 
                 {/* Сообщение о минимальном количестве для доставки */}
                 {!canDeliver && (
@@ -435,15 +438,13 @@ ${orderData.ordered_items
 
                 <div className={styles.deliveryMethods}>
                   {/* Самовывоз - заблокирован */}
-                  <label
-                    className={`${styles.deliveryMethod}`}
-                  >
+                  <label className={`${styles.deliveryMethod}`}>
                     <input
                       type="radio"
                       name="deliveryMethod"
                       value="pickup"
                       checked={deliveryMethod === "pickup"}
-                      // disabled
+                      disabled
                       onChange={(e) =>
                         setDeliveryMethod(e.target.value as DeliveryMethod)
                       }
@@ -480,7 +481,7 @@ ${orderData.ordered_items
                         {canDeliver
                           ? "Стоимость уточняется"
                           : `Минимум ${MIN_PACKS_FOR_DELIVERY} пачек ИЛИ ${MIN_BLOCKS_FOR_DELIVERY} блок ИЛИ ${MIN_ORDER_AMOUNT.toLocaleString(
-                              "ru-RU"
+                              "ru-RU",
                             )} ₽`}
                       </span>
                     </div>
