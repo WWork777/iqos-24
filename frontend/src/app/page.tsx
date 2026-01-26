@@ -77,7 +77,7 @@ export default function Home() {
       <BestSellers title="Хиты продаж IQOS ILUMA и TEREA" limit={8} />
       <Exclusive />
       <Reviews />
-      <ModalManager/>
+      {/* <ModalManager/> */}
     </>
   );
 }
